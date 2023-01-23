@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+	<head>
+		<title>Grolly Weine</title>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/grolly_favicon.png" />
+		<link rel="stylesheet" href="https://use.typekit.net/yks5bsn.css" />
+		<link rel="stylesheet" href="/src/styles/normalize.css" />
+		<link rel="stylesheet" href="/src/styles/style.css" />
+		<link rel="stylesheet" href="/src/styles/barba.css" />
+		<script type="module" src="/src/ts/data.ts" defer></script>
+		<script type="module" src="/src/ts/main.ts" defer></script>
+		<script type="module" src="/src/ts/shop.ts" defer></script>
+		<script type="module" src="/src/ts/basket.ts" defer></script>
+		<script type="module" src="/src/ts/barba.ts" defer></script>
+		<script>
+			/*to prevent Firefox FOUC, this must be here*/
+			let FF_FOUC_FIX;
+		</script>
+	</head>
+	<body class="overflow-x-hidden bg-slate-100">
+		
+		<!-- NAV BAR Start -->
+		<div>
+			<nav
+				class="fixed z-20 top-0 left-0 w-full flex justify-center items-center h-14"
+			>
+				<div class="absolute z-30 text-2xl font-bold tracking-[6px] pt-2 leading-none cursor-pointer lg:text-3xl">
+					<a href="/index.html">GROLLY</a>
+				</div>
+				<div class="relative w-full flex justify-end gap-4 px-2 sm:gap-6">
+					<a href="/src/views/warenkorb.html">
+						<div class="relative w-8 tabular-nums" id="cart-icon">
+						    <img class="h-[30px]" src="/src/assets/icons/shopping-cart2.png" alt="Korb" />
+						</div>
+					</a>
+					<img class="menu-toggle w-8 top-3 right-4 cursor-pointer"
+						src="/src/assets/icons/hamburger_black.png"
+						alt="Menü" />
+				</div>
+			</nav>
+
+			<!-- NAV DROPDOWN Start -->
+			<div
+				class="menu fixed z-30 h-screen top-0 right-0 w-full flex flex-col justify-between bg-black text-white 
+				px-10 pt-24 pb-12 translate-x-full transition ease-out duration-300
+				md:w-2/5 lg:w-1/3"
+			>
+				<img
+					class="menu-toggle w-5 absolute top-5 right-6 cursor-pointer"
+					src="/src/assets/icons/close_white.png"
+					alt="Menü"
+				/>
+				<ul class="h2 flex flex-col gap-12 tracking-widest uppercase">
+					<li class="cursor-pointer">
+						<a class="menu-toggle transition-colors duration-200 hover:text-[#939AEC] active:text-[#5964db]" href="/index.html">Home</a>
+					</li>
+					<li class="cursor-pointer">
+						<a class="menu-toggle transition-colors duration-200 hover:text-[#f79c87] active:text-[#de6e55]" href="/src/views/weingut.html">Weingut</a>
+					</li>
+					<li class="cursor-pointer">
+						<a class="menu-toggle transition-colors duration-200 hover:text-[#B1C09E] active:text-[#8b9d74]" href="/src/views/shop.html">Shop</a>
+					</li>
+					<li class="cursor-pointer">
+						<a class="menu-toggle transition-colors duration-200 hover:text-[#D281B6] active:text-[#c658a0]" href="/src/views/warenkorb.html">Warenkorb</a>
+					</li>
+				</ul>
+				<div class="w-full pt-2 border-t border-white">
+					<h4 class="font-bold mb-2">Kontakt</h4>
+					<p class="small mb-8">
+						+ 43 (0) 676 23791250<br />
+						info@grolly.at
+					</p>
+					<img class="icon mr-4" src="/src/assets/icons/instagram-white.svg" alt="instagram">
+					<img class="icon" src="/src/assets/icons/youtube-white.svg" alt="youtube">
+				</div>
+			</div>
+		</div>
+
+		<div data-barba="wrapper">
+			<div data-barba="container" data-barba-namespace="home">
+				<div class="transition-cover"></div>
+				<header
+					class="h-screen bg-cover bg-no-repeat bg-right relative pt-[120px] lg:pt-[180px]"
+					style="background-image: url(/src/assets/media/gradients/gradient_chardonnay.webp)"
+				>
+			
+				<!-- HERO Section Start -->
+				<div class="relative w-full max-w-[1520px] mx-auto flex flex-col items-center
+				md:items-start md:pl-[10%]
+				lg:justify-center">
+					<div
+						class="w-[110%] max-h-[400px] aspect-[16/10] -rotate-6 overflow-hidden mb-24
+						sm:w-[80%] 
+						md:w-[70%] min-w-[620px] max-w-[740px] md:max-h-[none] md:mb-16
+						xl:max-w-[900px]"
+					>
+						<img
+							class="absolute bottom-0 left-0 object-cover object-bottom"
+							src="/src/assets/media/hero.webp"
+							alt="Zwei Weinflaschen"
+						/>
+					</div>
+					<div
+						class="relative z-10 mx-auto bottom-[20%] text-center text-white uppercase font-bold tracking-widest drop-shadow-md
+						md:absolute md:mx-0 md:right-[10%] md:bottom-[-35%] md:text-left md:tracking-wide
+						lg:bottom-[10%] lg:right-[7%] lg:text-5xl xl:bottom-[20%]"
+					>
+						<h1 class="mb-12">
+							Kleine Produktion<br />
+							Großer Genuss
+						</h1>
+						<h2>Die Weine von Grolly.</h2>
+					</div>
+					</div>
+				</header>
+
+			<!-- MAIN SECTION Start -->
+			<main class="mx-auto w-full" >
+				<section class="side-padding pt-2
+				md:grid md:grid-cols-12 md:gap-x-4 md:gap-y-32
+				lg:pt-24">
+					<div class="spacer"></div>
+					<img
+						class="h-[70vh] w-full max-w-[400px] mx-auto object-cover bg-center
+						md:col-start-1 md:col-end-7 lg:max-w-[500px] lg:h-auto"
+						src="/src/assets/media/home_1.webp"
+						alt="Wein wird von einer Flasche in ein Weinglas geleert"
+					/>
+					<div class="spacer md:hidden"></div>
+					<div class="text-container
+					md:col-start-7 md:col-end-13 md:pt-20">
+						<h3
+							class="h-12 flex items-center mb-8 pt-1 border-y border-black uppercase font-bold tracking-wider"
+						>
+							Naturnaher Anbau
+						</h3>
+						<p class="mb-8">
+							Naturnaher Anbau und Pflege, ständige Kontrolle der Entwicklung von
+							Rebe und Wein sind unerlässlich im qualitätsorientierten Weinbau. Da
+							ein Großteil der Weinberge eine sonnige Lage aufweist, gedeihen hier
+							gut ausgereifte Trauben.
+						</p>
+						<p class="underline hover:text-orange-400 active:text-orange-600"><a href="/src/views/weingut.html">Unser Weingut.</a></p>
+					</div>
+					<div class="spacer"></div>
+					<div class="hidden md:h-full md:pt-44 md:flex md:items-end md:justify-center md:col-start-1 md:col-end-7
+					lg:relative lg:bottom-1/3 lg:col-start-2 lg:col-end-6">
+						<p class="text-container"
+						>
+						Verschiedene Rebsorten zu pflanzen hatte damals wie heute viele Vorzüge. 
+						Die unterschiedlichen Eigenschaften der Rebsorten sorgen für stabilen Ertrag 
+						und machen den Weingarten weniger anfällig für schlechtes Wetter oder 
+						Weinkrankheiten und Schädlinge.</p>
+					</div>
+					<div class="relative md:col-start-7 md:col-end-13">
+						<img
+							class="w-3/5 mx-auto object-cover drop-shadow-lg max-w-[220px]
+							sm:max-w-[260px] md:absolute md:bottom-0 md:right-0 md:left-0 md:w-full md:max-w-[240px]
+							lg:max-w-[320px]"
+							src="/src/assets/media/bottles/chardonnay.webp"
+							alt="Eine Flasche Chardonnay"
+						/>
+					</div>
+					<div class="spacer"></div>
+					<img
+						class="hidden w-full max-h-[500px] mx-auto object-cover bg-center
+						md:block md:col-start-2 md:col-end-7 lg:col-start-1 lg:col-end-7 lg:max-w-[500px] lg:max-h-[650px]"
+						src="/src/assets/media/home_5.webp"
+						alt="Gebäude inmitten von Weinfeldern, Berge im Hintergrund"
+					/>
+					<div
+						class="relative text-container h-full w-full flex justify-center items-center 
+						md:col-start-8 md:col-end-12"
+					>
+						<h3 class="w-full font-normal py-10 leading-loose text-center border-y border-slate-600
+						md:absolute md:top-[50%]">
+							„Wir produzieren<br />
+							trinkfreudige, elegante,<br />
+							mineralische Weine”
+						</h3>
+					</div>
+					<div class="spacer"></div>
+				</section>
+
+				<!-- Full Width Image -->
+				<div class="md:spacer"></div>
+				<section class="relative md:py-[120px]">
+					<img
+						src="/src/assets/media/home_2.webp"
+						alt="Gebäude auf einem Hügel, umgeben von Weinfeldern"
+					/>
+					<h2
+						class="absolute z-10 bottom-[30%] right-[20%] text-white font-bold drop-shadow-md invisible 
+						sm:visible md:bottom-[45%] md:right-[15%] md:text-4xl lg:text-5xl xl:text-6xl"
+					>
+						Wo die Sonne und der<br />
+						Wein zu Hause sind.
+					</h2>
+				</section>
+				
+				<div class="spacer"></div>
+				
+				<section class="side-padding grid grid-cols-2 gap-x-2 gap-y-16 pb-[80px]
+				md:grid-cols-12 md:gap-x-4 md:gap-y-0 lg:mb-[-200px]">
+					<div class="text-container col-start-1 col-end-3
+					md:col-start-1 md:col-end-7
+					lg:col-end-6">
+						<div>
+							<h3
+								class="h-12 flex items-center mb-8 pt-1 border-y border-black uppercase font-bold tracking-wider"
+							>
+								Höchste Qualität
+							</h3>
+							<p class="mb-8">
+								Unser seit 1856 im Familienbesitz befindliche Weinbaubetrieb liegt
+								im westlichen Weinviertel, direkt am Fuße des Manhartsberges. Die
+								Hälfte der Weingärten befinden sich in Obermarkersdorf, wo
+								überwiegend Weißwein geerntet wird. Der Rotwein, sowie der restliche
+								Teil des Weißweines werden in den Pulkauer Weingärten geerntet,
+								einem Gebiet, das sich vorzüglich für den Rotweinanbau eignet.
+							</p>
+							<p class="underline hover:text-orange-400 active:text-orange-600"><a href="/src/views/shop.html">Unsere Weine.</a></p>
+						</div>
+					</div>
+					<div class="md:order-3 md:col-start-1 md:col-end-6
+					lg:relative lg:bottom-1/3">
+						<img src="/src/assets/media/home_3.webp" alt="Großer Bund rote Weintrauben am Weinstock" />
+					</div>
+					<div class="md:order-2 md:col-start-7 md:col-end-13">
+						<img src="/src/assets/media/home_4.webp" alt="Wein wird in ein Weinglas geleert" />
+					</div>
+					<div class="text-container flex flex-col justify-between col-start-1 col-end-3 order-4
+					md:col-start-8 md:col-end-13 md:pt-16 lg:h-[66.66%]">
+						<p class="mb-16">
+							Unsere Leidenschaft für Wein und unser Wissen über die Trauben 
+							stecken wir in jede einzelne Flasche.
+						</p>
+						<div class="mx-auto flex justify-center md:ml-0">
+							<a  href="/src/views/shop.html"
+							class="group flex items-center w-fit px-16 pt-1 h-12 relative border border-black uppercase font-bold tracking-wider "
+							>
+							<p class="relative z-10 group-hover:text-white">Zum Weinshop</p>
+							<div class="w-full h-full absolute z-0 left-0 top-0 opacity-0 group-hover:opacity-100 transition-all duration-300 bg-gradient-to-tr from-orange-400 to-fuchsia-600"></div>
+                        	</a>
+						</div>
+					</div>
+				</section>			
+				</main>
+			
+				<!-- Heuriger Banner Start -->
+				<div
+					class="w-screen h-12 fixed z-20 left-0 bottom-0 bg-orange-400 translate-y-full transition duration-500 ease-out" id="banner"
+				>
+					<div class="side-padding h-full py-2 flex items-center gap-8 uppercase">
+						<div class="pt-1 font-bold tracking-wider text-xl">Heuriger 2023</div>
+						<button
+							class="h-full px-2 pt-[2px] text-end flex-1 border border-black tracking-wider uppercase underline transition  hover:bg-orange-500 active:bg-orange-400" id="banner-button"
+						>
+							mehr Info
+						</button>
+					</div>
+				</div>
+
+				<!-- Heuriger Modal Start -->
+				<div id="modal" class="invisible fixed z-20 max-w-[700px] mx-auto inset-x-2 inset-y-12 px-10 pt-10 pb-20 border text-white border-black drop-shadow-md
+				bg-black
+				sm:inset-x-8 lg:max-w-[1020px] lg:max-h-[70%] lg:my-auto">
+					<div class="flex justify-end">
+						<img class="w-5 cursor-pointer" src="/src/assets/icons/close_white.png" alt="Schließen" id="close-modal">
+					</div>
+					<div class="flex flex-col justify-between h-full lg:flex-row lg:gap-x-4">
+						<div class="h-2/4 text-center lg:h-4/5">
+							<div class="text-center text-5xl font-bold uppercase tracking-widest translate-y-2/4
+								sm:text-6xl lg:text-7xl">
+								Heuriger
+							</div>
+							<img class="w-full max-w-[550px]] h-full object-cover object-center mx-auto leading-[250px] bg-orange-200"
+							src="/src/assets/media/heuriger.webp" alt="Drei Weingläser beim Anstoßen">
+						</div>
+						<div class="flex flex-col justify-center gap-4 mx-auto w-full max-w-[370px] text-center uppercase tracking-wider lg:pt-[70px]">
+							<div>Vom 7. März bis 28. Juni</div>
+							<div class="h-[0.5px] w-[80%] mx-auto bg-white"></div>
+							<div>
+								Montag bis Freitag<br />
+								16 - 22 Uhr
+							</div>
+							<div class="h-[0.5px] w-[80%] mx-auto bg-white"></div>
+							<div>Feiertage geschlossen</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+			<!-- FOOTER Start -->
+			<footer class="w-screen pt-8 pb-20 mt-1 bg-slate-200 leading-tight">
+				<div class="side-padding text-center w-full flex flex-col gap-y-12 gap-x-4
+				sm:text-left sm:grid sm:grid-cols-3 lg:grid-cols-5">
+					<div>
+						<h4 class="font-bold mb-4">Kontakt</h4>
+						<p class="small mb-4">
+							Weingut Grolly GmbH<br />
+							Dorfstraße 18<br />
+							2122 Kronberg
+						</p>
+						<p class="small">
+							+ 43 (0) 676 23791250<br />
+							info@grolly.at
+						</p>
+					</div>
+					<div>
+						<h4 class="font-bold mb-4">Heuriger</h4>
+						<p class="small">Vom 7. März bis 28. Juni<br />
+							Montag bis Freitag<br />
+							16 - 22 Uhr<br />
+							Feiertage geschlossen
+						</p>
+					</div>
+					<div class="small pt-[43px]">
+						<p class="small mb-2">
+							&copy;Weingut Grolly 2023<br />
+						</p>
+						<div class="small mb-8 space-y-2 ">
+							<p class="small underline underline-offset-4 cursor-pointer"><a>Impressum</a></p>
+							<p class="small underline underline-offset-4 cursor-pointer mb-6"><a>Datenschutz</a></p>
+						</div>
+						<img class="icon mr-2" src="/src/assets/icons/instagram-black.svg" alt="instagram" />
+						<img class="icon" src="/src/assets/icons/youtube-black.svg" alt="youtube" />
+					</div>
+					<div class="hidden sm:flex sm:justify-end col-span-full lg:col-span-2">
+						<a href="#top">
+							<img class="w-8 h-8" src="/src/assets/icons/up-arrow.png" alt="Pfeil nach oben">
+						</a>
+					</div>
+				</div>
+			</footer>
+			
+	</body>
+	
+</html>

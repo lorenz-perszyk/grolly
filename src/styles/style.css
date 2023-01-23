@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	html {
+		font-family: "Korolev", system-ui, sans-serif;
+		overflow-x: hidden;
+	}
+
+	/* F O N T - S I Z E */
+	h1,
+	.h1 {
+		@apply font-bold text-4xl sm:text-5xl xl:text-6xl;
+	}
+	h2,
+	.h2 {
+		@apply font-bold text-2xl sm:text-3xl xl:text-4xl;
+	}
+	h3,
+	.h3 {
+		@apply font-bold text-2xl md:text-2xl xl:text-3xl;
+	}
+	h4,
+	.h4 {
+		@apply font-bold text-xl lg:text-2xl;
+	}
+	body,
+	p,
+	.p {
+		@apply leading-[1.5] text-lg lg:text-xl;
+	}
+	.small {
+		@apply text-base;
+	}
+
+	/* S H O P  font-sizes*/
+	.shop h1 {
+		@apply font-bold text-4xl sm:text-5xl;
+	}
+	.shop h3 {
+		@apply font-bold tracking-wide text-2xl md:text-2xl;
+	}
+	.shop p {
+		@apply leading-[1.5] text-lg;
+	}
+	.shop p.small {
+		@apply text-base;
+	}
+
+	/* T A B L E */
+	tbody td {
+		padding: 8px 0;
+	}
+	.figure {
+		@apply text-xl w-24 tracking-wider lg:text-2xl lg:w-28;
+	}
+
+	/* C U S T O M */
+	.icon {
+		@apply w-8 h-8 inline-block cursor-pointer;
+	}
+	.spacer {
+		@apply h-[80px] md:h-[120px] md:hidden;
+	}
+	.side-padding {
+		@apply px-2 sm:px-8 max-w-[1280px] mx-auto;
+	}
+	.text-container {
+		@apply mx-auto max-w-[580px];
+	}
+	.flex-center {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}
+
+* {
+	/* outline: 0.5px solid red; */
+}

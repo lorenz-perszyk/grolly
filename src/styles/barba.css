@@ -1,0 +1,46 @@
+/* B A R B A */
+
+/* Once */
+.home-once {
+	opacity: 0;
+}
+.home-once-active {
+	transition: opacity 1.5s linear 0.2s;
+}
+.home-once-to {
+	opacity: 1;
+}
+
+/* Cover */
+.transition-cover {
+	background: url(/src/assets/media/gradients/gradient_2.webp);
+	background-size: auto;
+	position: fixed;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 50;
+}
+
+.cover-leave-active,
+.cover-enter-active,
+.cover-leave-active .transition-cover,
+.cover-enter-active .transition-cover {
+	transition: width 0.65s cubic-bezier(0.33, 1, 0.68, 1) 0.15s;
+}
+
+/* Cover in */
+.cover-leave .transition-cover {
+	width: 0;
+}
+.cover-leave-to .transition-cover {
+	width: 100%;
+}
+
+/* Cover left */
+.cover-enter .transition-cover {
+	width: 100%;
+}
+.cover-enter-to .transition-cover {
+	width: 0;
+}
