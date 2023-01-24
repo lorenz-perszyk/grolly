@@ -2,12 +2,18 @@
 import "../styles/style.css";
 import { shopItemsData } from "./data";
 import { cartItemAmount } from "./basket";
-import { updateBasket } from "./basket";
 
 
 // F U N C T I O N S
 
 type basketData = {
+	id: string;
+	name: string;
+	year: number;
+	price: number;
+	quantity: number;
+};
+type wineData = {
 	id: string;
 	name: string;
 	year: number;
@@ -21,9 +27,9 @@ type basketData = {
 	img: string;
 	background: string;
 };
-let basket: basketData[] = JSON.parse(localStorage.getItem("basket")!) ?? [];
 
-const createEntry = (item: basketData) => {
+
+const createEntry = (item: wineData) => {
     return `
         <div class="basket wine flex flex-col gap-4 mx-auto md:flex-row md:grid md:grid-cols-6 md:gap-4
             lg:max-w-[960px] xl:flex xl:flex-col">
@@ -114,22 +120,25 @@ const generateShopWhite = () => {
        createEntry(item)
     ).join(""))
 }
-
-const addToBasket = (id: string) => {
-    let inputElement = document.getElementById(`amount_${id}`)! as HTMLSelectElement;
+// Add selected wine and amount to basket
+const addToBasket = (wineId: string) => {
+    let basket: basketData[] = JSON.parse(localStorage.getItem("basket")!) ?? [];
+    let inputElement = document.getElementById(`amount_${wineId}`)! as HTMLSelectElement;
     let index = inputElement.options.selectedIndex;
     let quantity = Number(inputElement.options[index].value);
     
-    if (!basket.find((item) => item.id === id  && (basket.length > 0))) {
-        let dataIndex = shopItemsData.findIndex((item) => item.id === id);
-        basket.push(shopItemsData[dataIndex])
+    if (!basket.find((item) => item.id === wineId)) {
+        let dataIndex = shopItemsData.findIndex((item) => item.id === wineId);
+        let wine = {...shopItemsData[dataIndex]}
+        let {id, name, year, quantity, price} = wine
+        let basketWineData = {id, name, year, quantity, price}
+        basket.push(basketWineData);
     }
-
-    let basketIndex = basket.findIndex((item) => item.id === id)
+    
+    let basketIndex = basket.findIndex((item) => item.id === wineId)
     basket[basketIndex].quantity += quantity;           
 
     localStorage.setItem("basket", JSON.stringify(basket));
-    updateBasket();
     cartItemAmount();
 }
 

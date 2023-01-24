@@ -32,7 +32,7 @@ const showBanner = () => {
 	document.removeEventListener("scroll", showBanner);
 	let banner = document.getElementById("banner");
 
-	if (banner) {
+	if (banner && window.innerHeight > 799) {
 		setTimeout(() => {
 			banner?.classList.replace("translate-y-full", "translate-y-0");
 		}, 2000);

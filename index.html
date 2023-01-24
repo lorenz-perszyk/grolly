@@ -6,20 +6,20 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/grolly_favicon.png" />
 		<link rel="stylesheet" href="https://use.typekit.net/yks5bsn.css" />
+		<link rel="stylesheet" href="/src/styles/barba.css" />
 		<link rel="stylesheet" href="/src/styles/normalize.css" />
 		<link rel="stylesheet" href="/src/styles/style.css" />
-		<link rel="stylesheet" href="/src/styles/barba.css" />
 		<script type="module" src="/src/ts/data.ts" defer></script>
+		<script type="module" src="/src/ts/barba.ts" defer></script>
 		<script type="module" src="/src/ts/main.ts" defer></script>
 		<script type="module" src="/src/ts/shop.ts" defer></script>
 		<script type="module" src="/src/ts/basket.ts" defer></script>
-		<script type="module" src="/src/ts/barba.ts" defer></script>
 		<script>
 			/*to prevent Firefox FOUC, this must be here*/
 			let FF_FOUC_FIX;
 		</script>
 	</head>
-	<body class="overflow-x-hidden bg-slate-100">
+	<body class=" bg-slate-100">
 		
 		<!-- NAV BAR Start -->
 		<div>
@@ -27,10 +27,10 @@
 				class="fixed z-20 top-0 left-0 w-full flex justify-center items-center h-14"
 			>
 				<div class="absolute z-30 text-2xl font-bold tracking-[6px] pt-2 leading-none cursor-pointer lg:text-3xl">
-					<a href="/index.html">GROLLY</a>
+					<a href="/grolly/index.html">GROLLY</a>
 				</div>
 				<div class="relative w-full flex justify-end gap-4 px-2 sm:gap-6">
-					<a href="/src/views/warenkorb.html">
+					<a href="/grolly/src/views/warenkorb.html">
 						<div class="relative w-8 tabular-nums" id="cart-icon">
 						    <img class="h-[30px]" src="/src/assets/icons/shopping-cart2.png" alt="Korb" />
 						</div>
@@ -54,16 +54,16 @@
 				/>
 				<ul class="h2 flex flex-col gap-12 tracking-widest uppercase">
 					<li class="cursor-pointer">
-						<a class="menu-toggle transition-colors duration-200 hover:text-[#939AEC] active:text-[#5964db]" href="/index.html">Home</a>
+						<a class="menu-toggle transition-colors duration-200 hover:text-[#939AEC] active:text-[#5964db]" href="/grolly/index.html">Home</a>
 					</li>
 					<li class="cursor-pointer">
-						<a class="menu-toggle transition-colors duration-200 hover:text-[#f79c87] active:text-[#de6e55]" href="/src/views/weingut.html">Weingut</a>
+						<a class="menu-toggle transition-colors duration-200 hover:text-[#f79c87] active:text-[#de6e55]" href="/grolly/src/views/weingut.html">Weingut</a>
 					</li>
 					<li class="cursor-pointer">
-						<a class="menu-toggle transition-colors duration-200 hover:text-[#B1C09E] active:text-[#8b9d74]" href="/src/views/shop.html">Shop</a>
+						<a class="menu-toggle transition-colors duration-200 hover:text-[#B1C09E] active:text-[#8b9d74]" href="/grolly/src/views/shop.html">Shop</a>
 					</li>
 					<li class="cursor-pointer">
-						<a class="menu-toggle transition-colors duration-200 hover:text-[#D281B6] active:text-[#c658a0]" href="/src/views/warenkorb.html">Warenkorb</a>
+						<a class="menu-toggle transition-colors duration-200 hover:text-[#D281B6] active:text-[#c658a0]" href="/grolly/src/views/warenkorb.html">Warenkorb</a>
 					</li>
 				</ul>
 				<div class="w-full pt-2 border-t border-white">
@@ -82,16 +82,16 @@
 			<div data-barba="container" data-barba-namespace="home">
 				<div class="transition-cover"></div>
 				<header
-					class="h-screen bg-cover bg-no-repeat bg-right relative pt-[120px] lg:pt-[180px]"
+					class="h-screen min-h-[800px] bg-cover bg-no-repeat bg-right overflow-hidden relative pt-[120px] lg:pt-[180px]"
 					style="background-image: url(/src/assets/media/gradients/gradient_chardonnay.webp)"
 				>
 			
 				<!-- HERO Section Start -->
-				<div class="relative w-full max-w-[1520px] mx-auto flex flex-col items-center
+				<div class="w-full max-w-[1520px] mx-auto flex flex-col items-center
 				md:items-start md:pl-[10%]
 				lg:justify-center">
 					<div
-						class="w-[110%] max-h-[400px] aspect-[16/10] -rotate-6 overflow-hidden mb-24
+						class="relative w-[110%] max-h-[400px] aspect-[16/10] -rotate-6 overflow-hidden mb-24
 						sm:w-[80%] 
 						md:w-[70%] min-w-[620px] max-w-[740px] md:max-h-[none] md:mb-16
 						xl:max-w-[900px]"
@@ -103,8 +103,8 @@
 						/>
 					</div>
 					<div
-						class="relative z-10 mx-auto bottom-[20%] text-center text-white uppercase font-bold tracking-widest drop-shadow-md
-						md:absolute md:mx-0 md:right-[10%] md:bottom-[-35%] md:text-left md:tracking-wide
+						class="absolute z-10 mx-auto bottom-[40px] text-center text-white uppercase font-bold tracking-widest drop-shadow-md
+						md:mx-0 md:right-[10%] md:bottom-[70px] md:text-left md:tracking-wide
 						lg:bottom-[10%] lg:right-[7%] lg:text-5xl xl:bottom-[20%]"
 					>
 						<h1 class="mb-12">
@@ -123,7 +123,7 @@
 				lg:pt-24">
 					<div class="spacer"></div>
 					<img
-						class="h-[70vh] w-full max-w-[400px] mx-auto object-cover bg-center
+						class="h-[70vh] min-h-[560px] w-full max-w-[400px] mx-auto object-cover bg-center
 						md:col-start-1 md:col-end-7 lg:max-w-[500px] lg:h-auto"
 						src="/src/assets/media/home_1.webp"
 						alt="Wein wird von einer Flasche in ein Weinglas geleert"
@@ -142,7 +142,7 @@
 							ein Großteil der Weinberge eine sonnige Lage aufweist, gedeihen hier
 							gut ausgereifte Trauben.
 						</p>
-						<p class="underline hover:text-orange-400 active:text-orange-600"><a href="/src/views/weingut.html">Unser Weingut.</a></p>
+						<p class="underline hover:text-orange-400 active:text-orange-600"><a href="/grolly/src/views/weingut.html">Unser Weingut.</a></p>
 					</div>
 					<div class="spacer"></div>
 					<div class="hidden md:h-full md:pt-44 md:flex md:items-end md:justify-center md:col-start-1 md:col-end-7
@@ -221,7 +221,7 @@
 								Teil des Weißweines werden in den Pulkauer Weingärten geerntet,
 								einem Gebiet, das sich vorzüglich für den Rotweinanbau eignet.
 							</p>
-							<p class="underline hover:text-orange-400 active:text-orange-600"><a href="/src/views/shop.html">Unsere Weine.</a></p>
+							<p class="underline hover:text-orange-400 active:text-orange-600"><a href="/grolly/src/views/shop.html">Unsere Weine.</a></p>
 						</div>
 					</div>
 					<div class="md:order-3 md:col-start-1 md:col-end-6
@@ -238,7 +238,7 @@
 							stecken wir in jede einzelne Flasche.
 						</p>
 						<div class="mx-auto flex justify-center md:ml-0">
-							<a  href="/src/views/shop.html"
+							<a href="/grolly/src/views/shop.html"
 							class="group flex items-center w-fit px-16 pt-1 h-12 relative border border-black uppercase font-bold tracking-wider "
 							>
 							<p class="relative z-10 group-hover:text-white">Zum Weinshop</p>
@@ -251,7 +251,7 @@
 			
 				<!-- Heuriger Banner Start -->
 				<div
-					class="w-screen h-12 fixed z-20 left-0 bottom-0 bg-orange-400 translate-y-full transition duration-500 ease-out" id="banner"
+					class="w-full h-12 fixed z-20 left-0 bottom-0 bg-orange-400 translate-y-full transition duration-500 ease-out" id="banner"
 				>
 					<div class="side-padding h-full py-2 flex items-center gap-8 uppercase">
 						<div class="pt-1 font-bold tracking-wider text-xl">Heuriger 2023</div>
@@ -294,9 +294,9 @@
 			</div>
 		</div>
 			<!-- FOOTER Start -->
-			<footer class="w-screen pt-8 pb-20 mt-1 bg-slate-200 leading-tight">
+			<footer class="w-full pt-8 pb-20 mt-1 bg-slate-200 leading-tight">
 				<div class="side-padding text-center w-full flex flex-col gap-y-12 gap-x-4
-				sm:text-left sm:grid sm:grid-cols-3 lg:grid-cols-5">
+				sm:text-left sm:grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
 					<div>
 						<h4 class="font-bold mb-4">Kontakt</h4>
 						<p class="small mb-4">
@@ -328,7 +328,7 @@
 						<img class="icon mr-2" src="/src/assets/icons/instagram-black.svg" alt="instagram" />
 						<img class="icon" src="/src/assets/icons/youtube-black.svg" alt="youtube" />
 					</div>
-					<div class="hidden sm:flex sm:justify-end col-span-full lg:col-span-2">
+					<div class="hidden md:inline-flex md:justify-end md:col-span-1 lg:col-span-2">
 						<a href="#top">
 							<img class="w-8 h-8" src="/src/assets/icons/up-arrow.png" alt="Pfeil nach oben">
 						</a>

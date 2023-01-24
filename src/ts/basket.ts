@@ -18,29 +18,32 @@ type basketData = {
 	img: string;
 	background: string;
 };
-let basket: basketData[] = JSON.parse(localStorage.getItem("basket")!) ?? [];
+
 
 // Update Basket
 export const updateBasket = () => {
-    basket = JSON.parse(localStorage.getItem("basket")!);
+
 }
 
 // Show how many items are in the cart
 export const cartItemAmount = () => {
-    let cartIcon = document.getElementById("cart-icon")!;
-    let totalItems = basket.map((item) => item.quantity).reduce((a, b) => a + b, 0);
-
-    if (basket.length !== 0 && !cartIcon.classList.contains("after:content-[attr(data-after)]")) {
-		cartIcon.setAttribute("data-after", String(totalItems))
-        cartIcon.classList.add("after:absolute", "after:w-6", "after:h-6", "after:text-center", "after:text-white", "after:text-[14px]", "after:leading-[26px]",
-		"after:align-middle", "after:-top-2", "after:-right-2", "after:bg-orange-600", "after:content-[attr(data-after)]", "after:rounded-full")
-    } else if (basket.length === 0) {
-		cartIcon.classList.remove("after:absolute", "after:w-6", "after:h-6", "after:text-center", "after:text-white", "after:text-[14px]", "after:leading-[26px]",
-		"after:align-middle", "after:-top-2", "after:-right-2", "after:bg-orange-600", "after:content-[attr(data-after)]", "after:rounded-full")
-	} else {
-		cartIcon.setAttribute("data-after", String(totalItems))
-		console.log("only set item amount");
-	}
+    let basket: basketData[] = JSON.parse(localStorage.getItem("basket")!) ?? [];
+    if (basket) {
+        let cartIcon = document.getElementById("cart-icon")!;
+        let totalItems = basket.map((item) => item.quantity).reduce((a, b) => a + b, 0) ?? 0;
+    
+        if (basket.length !== 0 && !cartIcon.classList.contains("after:content-[attr(data-after)]")) {
+            cartIcon.setAttribute("data-after", String(totalItems))
+            cartIcon.classList.add("after:absolute", "after:w-6", "after:h-6", "after:text-center", "after:text-white", "after:text-[14px]", "after:leading-[26px]",
+            "after:align-middle", "after:-top-2", "after:-right-2", "after:bg-orange-600", "after:content-[attr(data-after)]", "after:rounded-full")
+        } else if (basket.length === 0) {
+            cartIcon.classList.remove("after:absolute", "after:w-6", "after:h-6", "after:text-center", "after:text-white", "after:text-[14px]", "after:leading-[26px]",
+            "after:align-middle", "after:-top-2", "after:-right-2", "after:bg-orange-600", "after:content-[attr(data-after)]", "after:rounded-full")
+        } else {
+            cartIcon.setAttribute("data-after", String(totalItems))
+            // console.log("only set item amount");
+        }
+    }
 }
 
 const formatNumber = (number: number) => {
@@ -49,9 +52,10 @@ const formatNumber = (number: number) => {
 }
 
 const calculateShipping = () => {
-    let subTotal = basket.map((item) => item.price * item.quantity).reduce((a, b) => a + b, 0);
+    let basket: basketData[] = JSON.parse(localStorage.getItem("basket")!) ?? [];
+    let subTotal = basket !== null ? basket.map((item) => item.price * item.quantity).reduce((a, b) => a + b, 0) : 0;
     let costs: number;
-    if (basket.length === 0 || (basket.length !== 0 && subTotal > 100)) {
+    if ((basket === null || basket.length === 0) || (basket && basket.length !== 0 && subTotal > 100)) {
         costs = 0
     } else  {
         costs = 9.90
@@ -87,7 +91,8 @@ const generateBasketItem = (item: basketData) => {
 };
 
 const generateTableFooter = () => {
-    let subTotal = basket.map((item) => item.price * item.quantity).reduce((a, b) => a + b, 0);
+    let basket: basketData[] = JSON.parse(localStorage.getItem("basket")!) ?? [];
+    let subTotal = basket !== null ? basket.map((item) => item.price * item.quantity).reduce((a, b) => a + b, 0) : 0;
     let total = (subTotal + calculateShipping());
     const footer = document.getElementById("table-footer")!;
 
@@ -120,9 +125,9 @@ const generateTableFooter = () => {
 }
 
 const fillBasket = () => {
-    basket = JSON.parse(localStorage.getItem("basket")!)
+    let basket: basketData[] = JSON.parse(localStorage.getItem("basket")!) ?? [];
     let basketItems = document.getElementById("basket-items")!;
-    if (basket.length !== 0) {
+    if (basket && basket.length !== 0) {
         basketItems.innerHTML = basket.map((item: basketData) => generateBasketItem(item)).join("")
     } else {
         basketItems.innerHTML = `<td class="text-center text-xl pt-8" colspan="5">Warenkorb leer.</td`
@@ -130,12 +135,12 @@ const fillBasket = () => {
 }
 
 const removeItem = (id: string) => {
+    let basket: basketData[] = JSON.parse(localStorage.getItem("basket")!) ?? [];
     basket = basket.filter((item) => item.id !== id);
-    localStorage.setItem("basket", JSON.stringify(basket));
+    basket.length === 0 ? localStorage.clear() : localStorage.setItem("basket", JSON.stringify(basket));
     fillBasket();
     generateTableFooter();
     createDeleteButtons();
-    updateBasket();
     cartItemAmount();
 }
 
@@ -161,7 +166,6 @@ window.addEventListener('load', () => {
         fillBasket();
         generateTableFooter();
         createDeleteButtons();
-        updateBasket();
         cartItemAmount();
     }
 })
@@ -171,7 +175,6 @@ export const activateBasketFunctions = () => {
     fillBasket();
     generateTableFooter();
     createDeleteButtons();
-    updateBasket();
     cartItemAmount();
 }
 

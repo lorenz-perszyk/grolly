@@ -9,20 +9,20 @@ import { hero } from "./main";
 // tell Barba to use the css plugin
 barba.use(barbaCss);
 
-
 // F U N C T I O N S
 
 // Scroll to top when new page enters
 barba.hooks.afterLeave(() => {
+});
+
+barba.hooks.enter(() => {
     if (history.scrollRestoration) {
         history.scrollRestoration = 'manual';
     }
+    console.log('scroll top enter');
     window.scrollTo(0, 0);
-});
 
-barba.hooks.beforeEnter(() => {
-    window.scrollTo(0, 0);
-})
+  });
 
 // init Barba
 barba.init({
@@ -51,7 +51,6 @@ barba.init({
 			namespace: "weingut",
 			beforeEnter() {
 				if (window.location.href.includes("weingut")) {
-					console.log("afterEnter weingut");
                     hero();
 				}
 			},

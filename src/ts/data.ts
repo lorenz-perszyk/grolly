@@ -20,7 +20,7 @@ import veltlinertBg from "/src/assets/media/gradients/gradient_veltliner.webp";
 
 // D A T A
 
-type basketData = {
+type wineData = {
 	id: string;
 	name: string;
 	year: number;
@@ -35,7 +35,7 @@ type basketData = {
 	background: string;
 };
 
-export let shopItemsData: basketData[] = [
+export let shopItemsData: wineData[] = [
     {
         id: "red_1",
         name: "Zweigelt",

@@ -5,7 +5,7 @@
 	opacity: 0;
 }
 .home-once-active {
-	transition: opacity 1.5s linear 0.2s;
+	transition: opacity 1.2s linear 0.2s;
 }
 .home-once-to {
 	opacity: 1;
