@@ -55,7 +55,7 @@ const calculateShipping = () => {
     let basket: basketData[] = JSON.parse(localStorage.getItem("basket")!) ?? [];
     let subTotal = basket !== null ? basket.map((item) => item.price * item.quantity).reduce((a, b) => a + b, 0) : 0;
     let costs: number;
-    if ((basket === null || basket.length === 0) || (basket && basket.length !== 0 && subTotal > 100)) {
+    if ((basket === null || basket.length === 0) || (basket && basket.length !== 0 && subTotal >= 100)) {
         costs = 0
     } else  {
         costs = 9.90
